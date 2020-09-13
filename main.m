@@ -9,14 +9,13 @@ clear all;
 %Phi: diagnoal matrix, RIS phase shift
 %h_2: User-RIS channel for the single-antenna user (only 1 user in the system)
 %beta: User-RIS-BS cascaded path loss
-%   loss
 %The direct User-BS channel is assumed to be blocked.
 
 
 
 
-M=10; %# of antennas;
-Nlist=[40,200,400]; %# of LIS components;
+M=10; %# of BS antennas;
+Nlist=[40,200,400]; %# of RIS components;
 sigma=10^(-11); %noise power,-110dBW
 p=5; % transmit power,5W
 x=[0,0,25]; %BS location (x,y,z)
