@@ -1,18 +1,32 @@
 % if 1
 clear all;
-M=10; %# of BS antennas;
-Nlist=[40,200,400]; %# of RIS components;
+%Note: the channel model is given by
+%h=H_1*Phi*h_2*beta
+%where:
+%h:cascaded User-RIS-BS channel
+%H_1: BS-RIS channel, rank-1, H_1=a*b' with a,b denoting steering vectors
+%   at BS and RIS, respectively
+%Phi: diagnoal matrix, RIS phase shift
+%h_2: User-RIS channel for the single-antenna user (only 1 user in the system)
+%beta: User-RIS-BS cascaded path loss
+%   loss
+%The direct User-BS channel is assumed to be blocked.
 
-sigma=10^(-11); %noise power;
-p=5; % transmit power
+
+
+
+M=10; %# of antennas;
+Nlist=[40,200,400]; %# of LIS components;
+sigma=10^(-11); %noise power,-110dBW
+p=5; % transmit power,5W
 x=[0,0,25]; %BS location (x,y,z)
 y=[0,80,40]; %RIS location (x,y,z)
 du=100;
 z=[10,du,1.5]; %user location (x,y,z)
 
-beta1=(sqrt(norm(y-z)^2))^(-3.76)*10^(-3.53); %User-RIS path loss 
-beta2=(sqrt(norm(x-y)^2))^(-3.76)*10^(-3.53); %BS-RIS path loss
-beta=(sqrt(norm(x-y)^2+norm(y-z)^2))^(-3.76)*10^(-3.53); %User-BS path loss
+% beta1=(sqrt(norm(y-z)^2))^(-3.76)*10^(-3.53); %User-RIS path loss , no use
+% beta2=(sqrt(norm(x-y)^2))^(-3.76)*10^(-3.53); %BS-RIS path loss, no use
+beta=(sqrt(norm(x-y)^2+norm(y-z)^2))^(-3.76)*10^(-3.53); %Cascaded path loss
 
 theta_los_1=atan(80/15);
 theta_los_2=pi-theta_los_1;
