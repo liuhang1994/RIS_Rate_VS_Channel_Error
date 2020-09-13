@@ -1,7 +1,7 @@
 % if 1
 clear all;
-M=10; %# of antennas;
-Nlist=[40,200,400]; %# of LIS components;
+M=10; %# of BS antennas;
+Nlist=[40,200,400]; %# of RIS components;
 
 sigma=10^(-11); %noise power;
 p=5; % transmit power
